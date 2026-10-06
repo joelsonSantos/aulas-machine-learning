@@ -45,34 +45,43 @@ Com o sistema montado, o próximo passo é manipulação algébrica para isolar 
 ### Passo 3.1: Encontrando a equação para $\beta_0$
 
 Partindo da primeira derivada:
+
 $$\sum_{i=1}^{n} -2(y_i - \beta_0 - \beta_1x_i) = 0$$
 
 Dividimos por $-2$ e distribuímos o somatório:
+
 $$\sum y_i - \sum \beta_0 - \sum \beta_1x_i = 0$$
 
 Sabendo que somar uma constante $\beta_0$ por $n$ vezes resulta em $n\beta_0$:
+
 $$\sum y_i - n\beta_0 - \beta_1\sum x_i = 0$$
 
 Dividindo toda a equação pelo número de observações $n$:
+
 $$\frac{\sum y_i}{n} - \beta_0 - \beta_1\frac{\sum x_i}{n} = 0$$
 
 Substituindo pelas médias ($\bar{y}$ e $\bar{x}$), chegamos à equação do intercepto:
+
 $$\beta_0 = \bar{y} - \beta_1\bar{x}$$
 
 ### Passo 3.2: Encontrando a equação para $\beta_1$
 
 Substituímos o valor de $\beta_0$ encontrado acima na segunda equação do nosso sistema:
+
 $$\sum_{i=1}^{n} -2x_i(y_i - \beta_0 - \beta_1x_i) = 0$$
 
 Dividimos por $-2$ e expandimos os termos:
+
 $$\sum (x_iy_i - \beta_0x_i - \beta_1x_i^2) = 0$$
 
 $$\sum x_iy_i - \beta_0\sum x_i - \beta_1\sum x_i^2 = 0$$
 
 Substituímos $\beta_0$ por $(\bar{y} - \beta_1\bar{x})$:
+
 $$\sum x_iy_i - (\bar{y} - \beta_1\bar{x})\sum x_i - \beta_1\sum x_i^2 = 0$$
 
 Sabendo que $\sum x_i = n\bar{x}$, substituímos e agrupamos os termos com $\beta_1$:
+
 $$\sum x_iy_i - n\bar{x}\bar{y} + \beta_1n\bar{x}^2 - \beta_1\sum x_i^2 = 0$$
 
 $$\sum x_iy_i - n\bar{x}\bar{y} = \beta_1(\sum x_i^2 - n\bar{x}^2)$$
