@@ -1,5 +1,9 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Aula de Regressão Linear</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -88,12 +92,14 @@ pre.code{margin:0;background:var(--code-bg);border:1px solid var(--rule);border-
 @media (max-width:820px){.slide{grid-template-columns:minmax(0,1fr);padding:22px 18px;min-height:0;gap:20px}}
 @media (prefers-reduced-motion:reduce){.prog span{transition:none}}
 </style>
-
+<style>[hidden]{display:none!important} body{margin:0} img{max-width:100%}</style>
+</head>
+<body>
 <div class="wrap">
   <div class="bar">
     <div class="brand">Fundamentos de Machine Learning · Aula 2</div>
     <div class="tools">
-      <button id="btnNotes" aria-pressed="true" title="Atalho: N">Notas do orador</button>
+      <button id="btnNotes" aria-pressed="true" title="Mostrar ou ocultar os detalhes de cada slide (atalho: N)">Detalhes</button>
       <button id="btnTheme" title="Atalho: D">Modo noite</button>
       <button id="btnPresent" class="primary" title="Atalho: F">Apresentar</button>
     </div>
@@ -108,9 +114,9 @@ pre.code{margin:0;background:var(--code-bg);border:1px solid var(--rule);border-
       <p class="sub">Partimos da reta mais simples, mexemos em cada parâmetro e chegamos ao critério que escolhe a melhor reta para os dados.</p>
       <div class="agenda"><span>dados</span><span>f(x) = x</span><span>intercepto a</span><span>inclinação b</span><span>resíduos</span><span>erro quadrático</span><span>mínimos quadrados</span><span>scikit-learn</span><span>várias features</span></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Apresente o objetivo: ao final, os alunos devem saber o que são os parâmetros a e b, o que é um resíduo e por que minimizamos a soma dos erros quadráticos. A aula segue a ordem do notebook <code>aula2-regressao-linear.ipynb</code>; cada gráfico aqui é a versão interativa de uma célula de lá.</p>
-      <p>Analogia de abertura: ajustar uma reta é como posicionar uma régua sobre pontos marcados num papel quadriculado. Hoje vamos descobrir como medir se a régua está bem posicionada.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>Ao final desta aula você deve saber o que são os parâmetros a e b de uma reta, o que é um resíduo e por que escolhemos a reta que minimiza a soma dos erros quadráticos. A sequência acompanha o notebook <code>aula2-regressao-linear.ipynb</code>: cada gráfico aqui é a versão interativa de uma célula de lá.</p>
+      <p>Uma imagem para guardar: ajustar uma reta é como posicionar uma régua sobre pontos marcados num papel quadriculado. A aula mostra como medir se a régua está bem posicionada.</p>
     </aside>
   </section>
 
@@ -132,9 +138,9 @@ plt.scatter(data[<span class="s">'Horas'</span>], data[<span class="s">'Notas'</
     <div class="viz"><canvas id="cv2"></canvas>
       <div class="read"><span>n = <b id="r2n"></b> alunos</span><span>dados de exemplo no formato de <b>notas.csv</b></span></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Mostre o diagrama de dispersão antes de qualquer fórmula. Pergunte à turma: "se um aluno estudar 7 horas, que nota vocês esperariam?" Eles vão responder olhando a tendência, e isso já é regressão feita a olho.</p>
-      <p>Destaque a nomenclatura: x (horas) é a variável explicativa, y (nota) é o alvo. Como o alvo é numérico e contínuo, o problema é de regressão, não de classificação. Os pontos deste slide são exemplos no mesmo formato do arquivo da aula.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>Antes de qualquer fórmula, olhe o diagrama de dispersão e tente responder: se um aluno estudar 7 horas, que nota você esperaria? Para responder, você usa a tendência dos pontos, e isso já é uma regressão feita a olho.</p>
+      <p>Nomenclatura: x (horas) é a variável explicativa e y (nota) é o alvo. Como o alvo é numérico e contínuo, o problema é de regressão, e não de classificação. Os pontos deste slide são exemplos no mesmo formato do arquivo da aula.</p>
     </aside>
   </section>
 
@@ -157,9 +163,9 @@ plt.plot(x, x)</pre>
       <div class="row"><button data-anim="3">Percorrer a reta</button></div>
       <div class="read"><span>x = <b id="r3x">–</b></span><span>f(x) = <b id="r3y">–</b></span></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>A reta f(x) = x é a mesma linha azul do notebook. Use o botão para mostrar que, em qualquer posição, a saída é igual à entrada.</p>
-      <p>Analogia: um conversor que não converte nada, como trocar reais por reais. Ela será a régua de referência: nos próximos slides ela continua desenhada em azul enquanto a reta vermelha muda.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>A reta f(x) = x é a mesma linha azul do notebook. Use o botão "Percorrer a reta" para ver que, em qualquer posição, a saída é igual à entrada.</p>
+      <p>Analogia: um conversor que não converte nada, como trocar reais por reais. Essa reta serve de referência: nos próximos slides ela continua desenhada em azul enquanto a reta vermelha muda.</p>
     </aside>
   </section>
 
@@ -182,8 +188,8 @@ plt.plot(x, x)</pre>
       <div class="ctrl"><label for="a4">a</label><input type="range" id="a4" min="-5" max="5" step="0.1" value="2"><output id="o4a"></output></div>
       <div class="row"><button data-anim="4">Animar a de −5 a 5</button></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Este é o primeiro laço animado do notebook. Arraste o controle e peça que os alunos observem onde a reta vermelha cruza o eixo vertical: é sempre em a.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>Este é o primeiro laço animado do notebook. Arraste o controle e observe onde a reta vermelha cruza o eixo vertical: é sempre no ponto (0, a).</p>
       <p>Analogia: o intercepto é a taxa fixa de um táxi, cobrada antes de rodar o primeiro quilômetro. No nosso problema, seria a nota esperada de quem estudou zero horas.</p>
     </aside>
   </section>
@@ -208,9 +214,9 @@ plt.plot(x, x)</pre>
       <div class="row"><button data-anim="5">Animar b de 0 a 5</button></div>
       <div class="read"><span>Δx = 1 ⇒ Δy = <b id="r5d"></b></span></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>O pequeno triângulo no gráfico mostra a inclinação: um passo de 1 em x provoca um passo de b em y. Esse é o significado prático de b no modelo: pontos de nota ganhos por hora adicional de estudo.</p>
-      <p>Analogia: b é o preço por quilômetro do táxi. Note que, sem o intercepto, a reta fica presa na origem, o que motiva combinar os dois parâmetros.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>O pequeno triângulo no gráfico mostra a inclinação: um passo de 1 em x provoca um passo de b em y. No modelo, b significa quantos pontos de nota se ganham por hora adicional de estudo.</p>
+      <p>Analogia: b é o preço por quilômetro do táxi. Repare que, sem o intercepto, a reta fica presa na origem; por isso combinamos os dois parâmetros no próximo slide.</p>
     </aside>
   </section>
 
@@ -234,9 +240,9 @@ plt.plot(x, x)</pre>
         <label for="b6">b</label><input type="range" id="b6" min="0" max="3" step="0.05" value="0.8"><output id="o6b"></output></div>
       <div class="row"><button data-anim="6">Animar (laço duplo)</button></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Este slide reproduz o laço duplo do notebook: para cada a inteiro, b varre de 0 a 5. Reforce que o espaço de todas as retas possíveis é bidimensional, um plano de pares (a, b).</p>
-      <p>Frase-chave: "treinar uma regressão linear é procurar, nesse plano, o par (a, b) mais adequado aos dados". Falta definir o que significa "mais adequado".</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>Este slide reproduz o laço duplo do notebook: para cada a inteiro, b varre de 0 a 5. O conjunto de todas as retas possíveis forma um plano de pares (a, b).</p>
+      <p>Ideia central: treinar uma regressão linear é procurar, nesse plano, o par (a, b) mais adequado aos dados. Os próximos slides definem o que significa "mais adequado".</p>
     </aside>
   </section>
 
@@ -257,9 +263,9 @@ plt.plot(x, x)</pre>
         <label for="b7">b</label><input type="range" id="b7" class="gb" min="0" max="2" step="0.01"><output class="ogb"></output></div>
       <div class="row"><button data-anim="7">Animar varredura</button></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Esta é a última célula animada do notebook: a reta varrendo o gráfico de dispersão. Peça a três alunos que ajustem os controles até achar "a melhor reta" e compare as respostas: elas serão diferentes.</p>
-      <p>A discordância é o ponto pedagógico. Sem um critério objetivo, cada pessoa escolhe uma régua diferente. Os próximos slides constroem esse critério passo a passo. Os valores de a e b ficam compartilhados entre os slides 7 a 11.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>Esta é a última célula animada do notebook: a reta varrendo o gráfico de dispersão. Ajuste os controles até achar a reta que você considera a melhor e compare com a escolha de um colega: provavelmente serão diferentes.</p>
+      <p>Essa diferença mostra que, sem um critério objetivo, cada pessoa escolhe uma régua diferente. Os próximos slides constroem esse critério. Os valores de a e b ficam compartilhados entre os slides 7 a 11, então a reta que você escolher aqui continua nos seguintes.</p>
     </aside>
   </section>
 
@@ -280,8 +286,8 @@ plt.plot(x, x)</pre>
         <label for="b8">b</label><input type="range" id="b8" class="gb" min="0" max="2" step="0.01"><output class="ogb"></output></div>
       <div class="read"><span>Σ e<sub>i</sub> = <b id="r8s"></b></span><span>Σ |e<sub>i</sub>| = <b id="r8a"></b></span></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Os traços vermelhos são os resíduos. Mostre que existem retas claramente ruins, por exemplo inclinadas demais, cuja soma de resíduos dá perto de zero, porque erros positivos e negativos se anulam. Experimente a = 4,9 e b = 0.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>Os traços vermelhos são os resíduos. Existem retas claramente ruins cuja soma de resíduos dá perto de zero, porque erros positivos e negativos se anulam. Experimente a = 4,9 e b = 0 e confira o valor de Σ e<sub>i</sub>.</p>
       <p>Analogia: um termômetro que marca 5 °C a mais de dia e 5 °C a menos à noite tem erro médio zero, mas não serve. Precisamos de uma medida em que todo erro conte como prejuízo.</p>
     </aside>
   </section>
@@ -307,9 +313,9 @@ sse = ((data[<span class="s">'Notas'</span>] - y_hat) ** <span class="k">2</span
       <div class="read"><span>SSE atual = <b class="e" id="r9s"></b></span><span>mínimo possível = <b id="r9m"></b></span></div>
       <div class="meter" aria-hidden="true"><span id="m9"></span></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Esta é a visualização geométrica do erro quadrático: cada resíduo vira o lado de um quadrado, e o SSE é a soma das áreas. Ao mover a reta, os quadrados encolhem e crescem. A barra vermelha compara o SSE atual com o menor valor possível.</p>
-      <p>Por que o quadrado e não o valor absoluto? Ele penaliza mais os erros grandes e gera uma função suave, com derivada em todo ponto, o que permite achar o mínimo com uma fórmula fechada. Analogia: uma multa que cresce mais que proporcionalmente ao excesso de velocidade.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>Aqui o erro quadrático aparece de forma geométrica: cada resíduo vira o lado de um quadrado, e o SSE é a soma das áreas. Ao mover a reta, os quadrados encolhem e crescem. A barra vermelha compara o SSE atual com o menor valor possível.</p>
+      <p>Por que o quadrado e não o valor absoluto? O quadrado penaliza mais os erros grandes e gera uma função suave, com derivada em todo ponto, o que permite achar o mínimo com uma fórmula fechada. Analogia: uma multa que cresce mais do que proporcionalmente ao excesso de velocidade.</p>
     </aside>
   </section>
 
@@ -332,9 +338,9 @@ sse = ((data[<span class="s">'Notas'</span>] - y_hat) ** <span class="k">2</span
       <div class="read"><span>a = <b class="oga"></b></span><span>b = <b class="ogb"></b></span><span>SSE = <b class="e" id="r10s"></b></span><span>★ mínimo</span></div>
       <canvas id="cv10b" style="aspect-ratio:16/7"></canvas>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Este gráfico não aparece no notebook. Deixe claro que é um mapa de calor da função de custo J(a, b), não o gradiente: o eixo horizontal é a, o vertical é b, e a cor é o SSE da reta correspondente. O gradiente seria a direção de maior subida nesse terreno, assunto que fica para depois. Arraste no mapa: o gráfico menor abaixo mostra a reta que corresponde ao ponto escolhido.</p>
-      <p>Analogia: um terreno em formato de tigela. Encontrar a melhor reta é encontrar o ponto mais baixo do terreno. Como a função é quadrática em a e b, a tigela é convexa e tem um único fundo. A mesma ideia de custo e de mínimo reaparece na próxima aula, de regressão logística.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>Este gráfico não aparece no notebook. Ele é um mapa de calor da função de custo J(a, b), e não do gradiente: o eixo horizontal é a, o vertical é b, e a cor é o SSE da reta correspondente. Arraste no mapa: o gráfico menor abaixo mostra a reta que corresponde ao ponto escolhido.</p>
+      <p>Analogia: um terreno em formato de tigela. Encontrar a melhor reta é encontrar o ponto mais baixo do terreno. Como a função é quadrática em a e b, a tigela tem um único fundo, marcado pela ★.</p>
     </aside>
   </section>
 
@@ -358,10 +364,10 @@ a = ym - b * xm</pre>
       <div class="row"><button class="primary" id="fit11">Ajustar por mínimos quadrados</button><button id="rand11">Começar de outra reta</button></div>
       <div class="read"><span>x̄ = <b id="r11xm"></b></span><span>ȳ = <b id="r11ym"></b></span><span>a* = <b id="r11a"></b></span><span>b* = <b id="r11b"></b></span><span>SSE = <b class="e" id="r11s"></b></span></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Explique sem demonstrar todos os passos: derivamos J em relação a a e a b, igualamos a zero e resolvemos o sistema de duas equações. O resultado são as fórmulas ao lado. O botão anima a reta atual até a solução ótima e o ponto marcado é a média (x̄, ȳ), por onde a reta ótima sempre passa.</p>
-      <p>Interpretação de b: covariância entre x e y dividida pela variância de x. Analogia: b mede quanto x e y "andam juntos" em relação a quanto x varia sozinho.</p>
-      <p>Para a dedução passo a passo e a implementação, indique aos alunos o repositório do curso: github.com/joelsonSantos/aulas-machine-learning/tree/main/algorithms/linear_regression</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>De onde vêm as fórmulas: derivamos J em relação a a e a b, igualamos as duas derivadas a zero e resolvemos o sistema de duas equações. O botão "Ajustar por mínimos quadrados" anima a reta atual até a solução ótima. O ponto marcado é a média (x̄, ȳ), por onde a reta ótima sempre passa.</p>
+      <p>Interpretação de b: covariância entre x e y dividida pela variância de x. Em palavras, b mede o quanto x e y "andam juntos" em relação a quanto x varia sozinho.</p>
+      <p>A dedução passo a passo e a implementação estão no repositório do curso: github.com/joelsonSantos/aulas-machine-learning/tree/main/algorithms/linear_regression</p>
     </aside>
   </section>
 
@@ -385,9 +391,9 @@ modelo.predict(pd.DataFrame({<span class="s">'Horas'</span>: [<span class="k">7<
       <div class="ctrl"><label for="h12">horas</label><input type="range" id="h12" min="0" max="10" step="0.1" value="7"><output id="o12h"></output></div>
       <div class="read"><span>intercept_ = <b id="r12a"></b></span><span>coef_ = <b id="r12b"></b></span><span>nota prevista = <b id="r12p"></b></span></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Mostre que a biblioteca entrega exatamente os valores da fórmula do slide anterior. Chame atenção para os colchetes duplos em <code>data[['Horas']]</code>: o scikit-learn espera uma matriz de atributos (2D), mesmo quando há uma única coluna.</p>
-      <p>Use o controle para fazer previsões e retome a pergunta do slide 2: quantos pontos se espera para 7 horas? Alerte que valores fora da faixa observada (extrapolação) são menos confiáveis.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>A biblioteca entrega exatamente os valores da fórmula do slide anterior. Atenção aos colchetes duplos em <code>data[['Horas']]</code>: o scikit-learn espera uma matriz de atributos (2D), mesmo quando há uma única coluna.</p>
+      <p>Use o controle para fazer previsões e volte à pergunta do slide 2: quantos pontos se espera para 7 horas? Valores de horas fora da faixa observada nos dados (extrapolação) aparecem em vermelho, porque essas previsões são menos confiáveis.</p>
     </aside>
   </section>
 
@@ -411,9 +417,9 @@ modelo.intercept_, modelo.coef_     <span class="c"># a, [b1, b2]</span></pre>
       <div class="row"><button id="spin13">Girar o gráfico</button><button id="res13" aria-pressed="true">Mostrar resíduos</button><span class="read">arraste para girar</span></div>
       <div class="read"><span>a = <b id="r13a"></b></span><span>b<sub>1</sub> (horas) = <b id="r13b1"></b></span><span>b<sub>2</sub> (sono) = <b id="r13b2"></b></span><span>SSE = <b class="e" id="r13s"></b></span></div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Até aqui usamos uma feature e ajustamos uma reta. Na prática, a nota depende de vários fatores. Com duas features (horas de estudo e horas de sono), o modelo vira um plano no espaço 3D, e o resíduo continua sendo a distância vertical de cada ponto até a superfície. Gire o gráfico e mostre que, vista de lado, cada "fatia" do plano é uma reta como as anteriores. Os dados deste slide são exemplos: a coluna "Sono" não existe em notas.csv.</p>
-      <p>Interpretação: b<sub>1</sub> é quanto a nota muda por hora extra de estudo mantendo o sono fixo. Analogia: o preço de um apartamento depende da área e do número de quartos. Cada coeficiente mede o efeito de uma característica com as outras iguais.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>Até aqui usamos uma feature e ajustamos uma reta. Na prática, a nota depende de vários fatores. Com duas features (horas de estudo e horas de sono), o modelo vira um plano no espaço 3D, e o resíduo continua sendo a distância vertical de cada ponto até a superfície. Gire o gráfico: vista de lado, cada "fatia" do plano é uma reta como as anteriores. Os dados deste slide são exemplos; a coluna "Sono" não existe em notas.csv.</p>
+      <p>Interpretação: b<sub>1</sub> é quanto a nota muda por hora extra de estudo mantendo o sono fixo. Analogia: o preço de um apartamento depende da área e do número de quartos, e cada coeficiente mede o efeito de uma característica com as outras iguais.</p>
       <p>Acima de três dimensões não conseguimos desenhar, mas a matemática é a mesma: X ganha uma coluna por feature e a solução de mínimos quadrados vem de (XᵀX)⁻¹Xᵀy. No scikit-learn, o código só muda na lista de colunas passada ao <code>fit</code>.</p>
     </aside>
   </section>
@@ -432,9 +438,9 @@ modelo.intercept_, modelo.coef_     <span class="c"># a, [b1, b2]</span></pre>
         <div class="card"><h4>Próxima aula</h4><p>Regressão logística: quando o alvo é uma classe (aprovado ou reprovado) e não um número.</p></div>
       </div>
     </div>
-    <aside class="notes"><h3>Notas do orador</h3>
-      <p>Recapitule seguindo a ordem dos cartões; ela é a mesma sequência de fases da aula. Proponha como exercício reproduzir os slides 8 e 9 no notebook: desenhar os resíduos com <code>plt.vlines</code> e calcular o SSE de três retas diferentes.</p>
-      <p>Faça a ponte para a próxima aula, de regressão logística, retomando os dados do slide 2: se, em vez da nota, quisermos prever se o aluno foi aprovado (sim ou não), o alvo deixa de ser contínuo. Uma reta pode prever valores abaixo de 0 ou acima de 1, e por isso precisaremos de outro modelo, que devolve uma probabilidade entre 0 e 1.</p>
+    <aside class="notes"><h3>Detalhes</h3>
+      <p>Os cartões seguem a mesma ordem das fases da aula. Para praticar, reproduza os slides 8 e 9 no notebook: desenhe os resíduos com <code>plt.vlines</code> e calcule o SSE de três retas diferentes.</p>
+      <p>Prévia da próxima aula: se, em vez da nota, quisermos prever se o aluno foi aprovado (sim ou não), o alvo deixa de ser contínuo. Uma reta pode prever valores abaixo de 0 ou acima de 1, e por isso vamos precisar de outro modelo: a regressão logística.</p>
     </aside>
   </section>
 
@@ -563,7 +569,7 @@ let yaw=-0.75,pitch=0.42,res13=true;
 S[13]=()=>{const cv=$('cv13');const{c,w,h}=setup(cv);const sc=Math.min(w,h)*0.66;
   const P=(x,y,z)=>{const X1=x/10-.5,Y1=(y-3)/7-.5,Z1=z/10-.5;const cx=Math.cos(yaw),sx=Math.sin(yaw);
     const u=X1*cx-Y1*sx,d=X1*sx+Y1*cx;const cp=Math.cos(pitch),sp=Math.sin(pitch);
-    return[w/2+u*sc,h/2+30-(Z1*cp+d*sp)*sc,d*cp-Z1*sp]};
+    return[w/2+u*sc,h/2+5-(Z1*cp+d*sp)*sc,d*cp-Z1*sp]};
   const seg=(p,q,col,lw=1,dash)=>{c.strokeStyle=col;c.lineWidth=lw;c.setLineDash(dash||[]);c.beginPath();c.moveTo(p[0],p[1]);c.lineTo(q[0],q[1]);c.stroke();c.setLineDash([])};
   const txt=(p,t,col,al='center')=>{c.fillStyle=col;c.font='12px "IBM Plex Mono", monospace';c.textAlign=al;c.textBaseline='middle';c.fillText(t,p[0],p[1])};
   const g=css('--grid2'),mu=css('--muted'),ac=css('--accent'),er=css('--err');
@@ -638,8 +644,8 @@ $('btnPresent').onclick=()=>present(true);$('exitp').onclick=()=>present(false);
 document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&deck.classList.contains('presenting')){deck.classList.remove('presenting');requestAnimationFrame(draw)}});
 
 // notas
-let notes=true;try{notes=localStorage.getItem('rl-notes')!=='0'}catch(e){}
-function setNotes(v){notes=v;deck.classList.toggle('hide-notes',!v);$('btnNotes').setAttribute('aria-pressed',v);try{localStorage.setItem('rl-notes',v?'1':'0')}catch(e){};requestAnimationFrame(draw)}
+let notes=true;try{notes=localStorage.getItem('rl-detalhes')!=='0'}catch(e){}
+function setNotes(v){notes=v;deck.classList.toggle('hide-notes',!v);$('btnNotes').setAttribute('aria-pressed',v);try{localStorage.setItem('rl-detalhes',v?'1':'0')}catch(e){};requestAnimationFrame(draw)}
 $('btnNotes').onclick=()=>setNotes(!notes);
 
 // tema
@@ -661,3 +667,5 @@ syncG();setNotes(notes);t3=7;
 const h=/^#s(\d+)$/.exec(location.hash);go(h?(+h[1]-1):0);
 })();
 </script>
+</body>
+</html>
