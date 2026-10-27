@@ -42,7 +42,7 @@ $$ \frac{\partial J}{\partial \beta_j} = \frac{\partial J}{\partial \hat{y}} \cd
 Vamos derivar cada componente individualmente para uma única observação (para simplificar, omitimos temporariamente o somatório e a divisão por $n$):
 
 ### Passo 3.1: Derivada do Custo em relação à previsão ($\hat{y}$)
-Aplicando a regra da derivada do logaritmo ($\frac{d}{dx}\log(x) = \frac{1}{x}$):
+Aplicando a regra da derivada do logaritmo ($$\frac{d}{dx}\log(x) = \frac{1}{x}$$):
 $$ \frac{\partial J}{\partial \hat{y}} = -\left( \frac{y}{\hat{y}} - \frac{1 - y}{1 - \hat{y}} \right) = \frac{\hat{y} - y}{\hat{y}(1 - \hat{y})} $$
 
 ### Passo 3.2: Derivada da Sigmóide ($\hat{y}$) em relação a $z$
@@ -50,7 +50,7 @@ A derivada da função sigmóide possui uma propriedade matemática elegante:
 $$ \frac{\partial \hat{y}}{\partial z} = \hat{y}(1 - \hat{y}) $$
 
 ### Passo 3.3: Derivada de $z$ em relação ao coeficiente ($\beta_j$)
-Dado que $z = \beta_0x_0 + \beta_1x_1 + \dots + \beta_jx_j$, a derivada em relação a um coeficiente específico $\beta_j$ é simplesmente a variável independente que o acompanha:
+Dado que $$z = \beta_0x_0 + \beta_1x_1 + \dots + \beta_jx_j$$, a derivada em relação a um coeficiente específico $\beta_j$ é simplesmente a variável independente que o acompanha:
 $$ \frac{\partial z}{\partial \beta_j} = x_j $$
 
 *(Nota: para o intercepto $\beta_0$, convenciona-se que $x_0 = 1$)*
@@ -59,7 +59,7 @@ $$ \frac{\partial z}{\partial \beta_j} = x_j $$
 Multiplicando os três componentes obtidos:
 $$ \frac{\partial J}{\partial \beta_j} = \left( \frac{\hat{y} - y}{\hat{y}(1 - \hat{y})} \right) \cdot \Big( \hat{y}(1 - \hat{y}) \Big) \cdot x_j $$
 
-Note como o denominador $\hat{y}(1 - \hat{y})$ corta perfeitamente com a derivada da sigmóide. Restituindo o somatório sobre as $n$ observações, chegamos à matriz do gradiente:
+Note como o denominador $$\hat{y}(1 - \hat{y})$$ corta perfeitamente com a derivada da sigmóide. Restituindo o somatório sobre as $n$ observações, chegamos à matriz do gradiente:
 
 **$$ \frac{\partial J}{\partial \beta_j} = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_i - y_i)x_{ij} $$**
 
